@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Professionnel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let fav of professionnel">
+    <ion-item >
+      <ion-thumbnail slot="start"><img src= "{{fav.img}}"></ion-thumbnail>
+      <ion-label>
+        <h2>{{fav.name}}</h2>
+        <p>{{fav.phone}}</p>
+      </ion-label>
+  </ion-item>
+  </ion-list>
+</ion-content>

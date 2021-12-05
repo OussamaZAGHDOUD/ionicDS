@@ -1,0 +1,124 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-buttons slot="primary">
+      <ion-button (click)="addContact()">
+        <ion-icon slot="icon-only" name="person-add" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    
+    <ion-searchbar #search debounce="500" placeholder="Search"  (ionChange)="_ionChange($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- 8 Skeletons-->
+  <div *ngIf="!contacts">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </div>
+  <!--Display Main Content-->
+
+  <ion-list *ngFor = "let contact of searchedItem">
+    <ion-item-sliding >
+
+      <ion-item  button (click)="showDetails(contact)">
+        <ion-thumbnail slot="start"><img src= "{{ contact?.img }}" alt="image_contact"></ion-thumbnail>
+        <ion-label>
+          <h2>{{ contact?.name}} {{contact?.lastname}}</h2>
+          <p>{{ contact?.phone }}</p>
+        </ion-label>
+    </ion-item>
+
+    <ion-item-options side="start">
+      <ion-item-option color="primary" (click)="markFav(contact)">Ajouter comme amis</ion-item-option>
+      <ion-item-option color="secondary" (click)="markFamille(contact)">Ajouter comme famille</ion-item-option>
+      <ion-item-option color="danger" (click)="markPro(contact)">Ajouter comme Professionnel</ion-item-option>
+      <ion-item-option color="success" (click)="markOther(contact)">Ajouter comme Autre</ion-item-option>
+
+    </ion-item-options>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="delete(contact.name)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

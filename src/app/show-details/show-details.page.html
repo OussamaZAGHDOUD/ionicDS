@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ShowDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card *ngFor="let user of displayUser" color="light">
+    <ion-item>
+  <ion-avatar class="profile-pic">
+    <img src="{{user.img}}" alt="image_contact">
+  </ion-avatar>
+</ion-item>
+
+    <ion-card-header>
+      <ion-card-title class="name">{{user.name}} {{user.lastname}}</ion-card-title>
+    </ion-card-header>
+    <br>
+    <ion-card-content>
+      <ion-icon name="call"></ion-icon> Mobile 1  : {{user.phone}} <br>
+      <ion-icon name="call"></ion-icon> Mobile 2  : {{user.phone2}} <br>
+      <ion-icon name="calendar"></ion-icon> Creation Date  : {{user.dateAdd | date:"d-M-YYYY"}} <br>
+      <ion-icon name="calendar"></ion-icon> Last Update  : {{user.dateUpdate | date:"d-M-YYYY "}} <br>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
